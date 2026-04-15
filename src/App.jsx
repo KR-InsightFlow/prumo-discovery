@@ -78,6 +78,7 @@ export default function ConsultoriaForm() {
     setTimeout(() => {
       setStep(nextStep);
       setFade(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
       if (formRef.current) formRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }, 300);
   };
@@ -488,13 +489,13 @@ export default function ConsultoriaForm() {
 
                     <div className="flex justify-between items-center mt-6 pt-4" style={{ borderTop: "1px solid #3d3d3a" }}>
                       <button
-                        onClick={() => rodaSubStep > 0 ? setRodaSubStep(rodaSubStep - 1) : goTo(1)}
+                        onClick={() => { rodaSubStep > 0 ? setRodaSubStep(rodaSubStep - 1) : goTo(1); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                         className={btnSecondary}
                       >
                         ← {rodaSubStep === 0 ? "Bloco anterior" : "Área anterior"}
                       </button>
                       <button
-                        onClick={() => rodaSubStep < LIFE_AREAS.length - 1 ? setRodaSubStep(rodaSubStep + 1) : goTo(3)}
+                        onClick={() => { rodaSubStep < LIFE_AREAS.length - 1 ? setRodaSubStep(rodaSubStep + 1) : goTo(3); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                         className={btnPrimary}
                       >
                         {rodaSubStep === LIFE_AREAS.length - 1 ? "Próximo bloco →" : "Próxima área →"}
