@@ -103,7 +103,24 @@ export default function ConsultoriaForm() {
     submittedAt: new Date().toISOString()
   });
 
-  const handleSubmit = () => {
+  const [sending, setSending] = useState(false);
+
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzz4Rwi_Nhhm8Bw-hyRhlEtjVrOHy41QV6p_SqEywl995W_cf5WCVCZOCnS3hKhMKSj/exec";
+
+  const handleSubmit = async () => {
+    setSending(true);
+    const data = buildFullData();
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+    } catch (err) {
+      console.error("Erro ao enviar:", err);
+    }
+    setSending(false);
     setSubmitted(true);
     goTo(4);
   };
@@ -559,8 +576,8 @@ export default function ConsultoriaForm() {
 
               <div className="flex justify-between items-center mt-10 pt-6" style={{ borderTop: "1px solid #3d3d3a" }}>
                 <button onClick={() => { setRodaSubStep(LIFE_AREAS.length - 1); goTo(2); }} className={btnSecondary}>← Voltar</button>
-                <button onClick={handleSubmit} className={btnPrimary + " !bg-[#10b981] hover:!bg-[#059669]"}>
-                  Finalizar & Enviar ✓
+                <button onClick={handleSubmit} disabled={sending} className={btnPrimary + " !bg-[#10b981] hover:!bg-[#059669] disabled:opacity-50 disabled:cursor-not-allowed"}>
+                  {sending ? "Enviando..." : "Finalizar & Enviar ✓"}
                 </button>
               </div>
             </div>
