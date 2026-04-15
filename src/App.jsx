@@ -587,14 +587,17 @@ export default function ConsultoriaForm() {
           {/* ========== FINAL ========== */}
           {step === 4 && (
             <div className="text-center py-16">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style={{ background: "rgba(16,185,129,0.1)", border: "2px solid #10b981" }}>
-                <span className="text-2xl">✓</span>
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style={{ background: "rgba(200,169,110,0.1)", border: "2px solid #c8a96e" }}>
+                <span className="text-2xl" style={{ color: "#c8a96e" }}>✓</span>
               </div>
-              <h2 className="text-2xl font-light mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Formulário enviado
+              <h2 className="text-2xl font-light mb-3" style={{ fontFamily: "'Playfair Display', serif", color: "#f1efe8" }}>
+                Suas respostas foram registradas
               </h2>
-              <p className="text-[#94918a] text-sm max-w-sm mx-auto mb-8">
-                Suas respostas foram registradas. Elas serão analisadas antes da nossa sessão de discovery para que o tempo juntos seja 100% estratégico.
+              <p className="text-[#b4b2a9] text-sm max-w-md mx-auto mb-4 leading-relaxed">
+                Obrigado pela honestidade. Cada resposta que você deu aqui vai ser analisada com cuidado antes da nossa conversa.
+              </p>
+              <p className="text-[#888780] text-sm max-w-md mx-auto mb-8 leading-relaxed">
+                Esse formulário é o primeiro passo. O próximo é nosso: a equipe da Prumo Advisory vai entrar em contato com você para agendar a sessão de Discovery — uma conversa estratégica de 90 minutos, baseada nas suas respostas, onde vamos aprofundar o que importa.
               </p>
 
               {/* Summary radar */}
@@ -605,27 +608,24 @@ export default function ConsultoriaForm() {
                     <PolarGrid stroke="#3d3d3a" />
                     <PolarAngleAxis dataKey="area" tick={<CustomTick />} />
                     <PolarRadiusAxis angle={90} domain={[0, 10]} tick={false} axisLine={false} />
-                    <Radar dataKey="score" stroke="#10b981" fill="#10b981" fillOpacity={0.15} strokeWidth={2} dot={{ r: 3, fill: "#10b981" }} />
+                    <Radar dataKey="score" stroke="#c8a96e" fill="#c8a96e" fillOpacity={0.15} strokeWidth={2} dot={{ r: 3, fill: "#c8a96e" }} />
                   </RadarChart>
                 </ResponsiveContainer>
-                <p className="text-sm text-[#b4b2a9] mt-2">Média geral: <span className="font-bold text-[#10b981]">{avgScore}</span>/10</p>
+                <p className="text-sm text-[#b4b2a9] mt-2">Média geral: <span className="font-bold" style={{ color: "#c8a96e" }}>{avgScore}</span>/10</p>
               </div>
 
-              <div className="rounded-lg p-4 max-w-sm mx-auto" style={{ background: "#2c2c2a", border: "1px solid #3d3d3a" }}>
-                <p className="text-xs text-[#888780]">
-                  <span className="text-[#94918a] font-semibold">Próximo passo:</span> Sessão de Discovery — 90 minutos de conversa estratégica baseada nas suas respostas.
+              <div className="rounded-lg p-5 max-w-md mx-auto" style={{ background: "#2c2c2a", border: "1px solid #3d3d3a" }}>
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-2" style={{ color: "#c8a96e" }}>Próximo passo</p>
+                <p className="text-sm text-[#b4b2a9] leading-relaxed">
+                  Aguarde nosso contato. Vamos agendar sua sessão de Discovery e começar a colocar seu negócio no prumo.
                 </p>
               </div>
 
-              <button onClick={handleDownload} className="mt-6 px-6 py-3 text-sm font-semibold rounded-lg transition-all duration-300 tracking-wide" style={{ background: "#3d3d3a", color: "#b4b2a9", border: "1px solid #5f5e5a" }}>
-                ↓ Baixar respostas (.json)
-              </button>
-
               {/* Logo footer */}
               <div className="mt-12 pt-6" style={{ borderTop: "1px solid #3d3d3a" }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 14, fontWeight: 700, color: "#5f5e5a" }}>Prumo</span>
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 300, color: "#444441", marginLeft: 4 }}>Advisory</span>
-                <p className="text-[10px] mt-1" style={{ color: "#444441" }}>Primeiro a vida. Depois o negócio.</p>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: "#888780" }}>Prumo</span>
+                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 300, color: "#5f5e5a", marginLeft: 4 }}>Advisory</span>
+                <p className="text-[11px] mt-1" style={{ color: "#5f5e5a", fontStyle: "italic" }}>Primeiro a vida. Depois o negócio.</p>
               </div>
             </div>
           )}
